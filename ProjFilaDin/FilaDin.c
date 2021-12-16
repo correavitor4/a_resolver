@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "FilaDin.h" //inclui os Protótipos
-//Definição do tipo Fila
+#include "FilaDin.h" //inclui os Protï¿½tipos
+//Definiï¿½ï¿½o do tipo Fila
 struct elemento{
     struct aluno dados;
     struct elemento *prox;
 };
 typedef struct elemento Elem;
-//Definição do Nó Descritor da Fila
+//Definiï¿½ï¿½o do Nï¿½ Descritor da Fila
 struct fila{
     struct elemento *inicio;
     struct elemento *final;
@@ -111,14 +111,71 @@ void imprime_Fila(Fila* fi){
 
 
 Fila* copialibera_Fila(Fila* fi){
+    Fila * filaCopia= cria_Fila();
+    Elem* el = (Elem*) malloc(sizeof(Elem));
+    while(!Fila_vazia(fi)){
+        consulta_Fila(fi,el);
+        remove_Fila(fi);
+        insere_Fila(filaCopia,el->dados);
 
-//sua implementacao aqui
-return NULL;
+    }
+
+return filaCopia;
 }
 
 
 int inverte_Fila(Fila* fi){
+    Elem *el = (Elem*) malloc(sizeof(Elem));
+    Fila * aux= cria_Fila();
+    Fila *filaFinal = cria_Fila();
+    int tamanhoParaCont = tamanho_Fila(fi);
+    int i=tamanhoParaCont;
+    int j=0;
 
-//sua implementacao aqui
-return 0;
+    while(tamanhoParaCont>0){
+        if(i>1){
+            
+            consulta_Fila(fi,el);
+            remove_Fila(fi);
+            insere_Fila(aux,el->dados);
+            i--;
+            //printf("a");
+            
+        }
+        else if(j<tamanhoParaCont){
+           
+            // printf ("\nj=");
+            // printf("%d",j);
+            // printf ("\n");
+            // printf("%d",i);
+            // imprime_Fila(aux);
+
+
+
+            if(j==0){
+                consulta_Fila(fi,el);
+                insere_Fila(filaFinal,el->dados);
+                remove_Fila(fi);
+                
+            }
+            
+            consulta_Fila(aux,el);
+            insere_Fila(fi,el->dados);
+            remove_Fila(aux);
+            j++;
+
+           
+            //printf("%d",j);
+        }
+        else{
+            imprime_Fila(filaFinal);
+            printf("\n\n");
+            tamanhoParaCont--;
+            i=tamanhoParaCont;
+            j=0;
+         
+        }
+    }
+    
+    return filaFinal;
 }

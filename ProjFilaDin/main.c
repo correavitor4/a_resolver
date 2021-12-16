@@ -19,10 +19,12 @@ int main(){
     printf("\n\nCópia da fila:\n");
     Fila* copia_fi=copialibera_Fila(fi);
     imprime_Fila(copia_fi);
+    
+    printf("\n\n\n\n");
 
-    printf("\n\nFila Invertida:\n");
+    //printf("\n\nFila Invertida:\n");    
     inverte_Fila(copia_fi);
-    imprime_Fila(copia_fi);
+    //imprime_Fila(copia_fi);
 
 
     libera_Fila(copia_fi);
