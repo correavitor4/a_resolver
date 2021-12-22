@@ -139,7 +139,9 @@ int inverte_Fila(Fila* fi){
             remove_Fila(fi);
             insere_Fila(aux,el->dados);
             i--;
-            //printf("a");
+            printf("\n");
+            imprime_Fila(aux);
+            printf("\n");
             
         }
         else if(j<tamanhoParaCont){
@@ -155,7 +157,11 @@ int inverte_Fila(Fila* fi){
             if(j==0){
                 consulta_Fila(fi,el);
                 insere_Fila(filaFinal,el->dados);
+                // printf("\nElemento copiado=  ");
+                // imprime_Fila(fi);
                 remove_Fila(fi);
+                // printf("primeiro elemento aux=  ");
+                // imprime_Fila(aux);
                 
             }
             
@@ -168,8 +174,8 @@ int inverte_Fila(Fila* fi){
             //printf("%d",j);
         }
         else{
-            imprime_Fila(filaFinal);
-            printf("\n\n");
+            // imprime_Fila(filaFinal);
+            // printf("\n\n");
             tamanhoParaCont--;
             i=tamanhoParaCont;
             j=0;
